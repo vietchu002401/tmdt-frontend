@@ -1,0 +1,33 @@
+.styled1{
+    position: absolute;
+    width: 300px;
+    height: 0px;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    right: 100%;
+    background-color: lightgrey;
+    transition: 0.2s;
+    animation: animation2 0.2s forwards;
+}
+.styled2{
+    position: absolute;
+    width: 300px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    right: 100%;
+    background-color: lightgrey;
+    animation: animation1 0.2s forwards;
+    transition: 0.2s;
+}
+
+@keyframes animation1 {
+    from{height: 0px;}
+    to{height: 300px;}
+}
+@keyframes animation2 {
+    from{height: 300px;}
+    to{height: 0px;}
+}

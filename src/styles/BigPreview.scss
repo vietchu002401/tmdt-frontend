@@ -1,0 +1,24 @@
+.home-big-preview{
+    max-width: 1200px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin: 80px auto;
+
+    .big-preview{
+        flex: 1;
+        margin: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        img{
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        h2{
+            font-weight : bold;
+        }
+    }
+}

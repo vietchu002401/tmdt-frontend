@@ -1,0 +1,140 @@
+.pay-main{
+    max-width: 1200px;
+    margin: 50px auto;
+    display: flex;
+
+    .customer-info{
+        flex-basis: 60%;
+        padding: 30px;
+        padding-top: 0;
+        display: flex;
+        flex-direction: column;
+
+        h3{
+            margin: 0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+            background-color: lightgrey;
+            font-weight: bold;
+        }
+
+       .customer-input{
+            width: 100%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+            input{
+                height: 40px;
+                border: 2px solid lightgrey;
+                outline: none;
+                padding: 5px;
+            }
+
+            select{
+                height: 40px;
+                border: 2px solid lightgrey;
+                outline: none;
+                padding: 5px;
+            }
+
+            .select{
+                display: flex;
+                justify-content: space-between;
+                select{
+                    flex: 1;
+                }
+            }
+       }
+
+       .transport{
+           display: flex;
+           justify-content: space-between;
+           margin: 20px 0;
+       }
+
+       .pay{
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            flex-direction: column;
+       }
+    }
+}
+
+
+.order-info{
+    flex: 1;
+    background-color: lightgrey;
+    min-height: 400px;
+    .order-info__main{
+        width: 100%;
+        padding: 30px;
+        padding-top: 0;
+    
+    
+        h3{
+            background-color: lightgrey;
+            font-weight: bold;
+            margin: 0;
+            padding: 10px;
+            border-bottom: 2px solid black;
+        }
+
+        .product-info{
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            border-bottom: 1px solid grey;
+
+            div{
+                display: flex;
+                justify-content: space-between;
+                padding: 5px;
+
+                p{
+                    margin: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                strong{
+                    margin: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+    .total{
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+    }
+    button{
+        width: 100%;
+        background-color: rgb(235, 106, 0);
+        color: white;
+        font-weight: bold;
+        height: 60px;
+    }
+}
+
+.loader {
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    animation: spin 2s linear infinite;
+    margin: 10px auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

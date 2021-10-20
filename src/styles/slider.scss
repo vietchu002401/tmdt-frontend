@@ -1,0 +1,19 @@
+.slide-content{
+    width: 100%;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+
+    a{
+        height: 40px;
+        text-decoration : none;
+        color : black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: lightgrey;
+    }
+    img{
+        width: 100%;
+    }
+}

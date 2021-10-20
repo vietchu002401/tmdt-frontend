@@ -1,0 +1,130 @@
+.main-product{
+    max-width: 1300px;
+    height: auto;
+    display: flex;
+    margin: 30px auto;
+
+    .choose{
+        flex-basis: 25%;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        h3{
+            font-weight: bold;
+            color: rgb(235, 106, 0);
+        }
+
+        ul{
+            width: 100%;
+            margin: 15px 10px 15px;
+        }
+        ul li{
+            list-style: none;
+            color: black;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .choose-li{
+            background-color: lightgrey;
+        }
+        .choose-li-none{
+            background-color: white;
+        }
+        li:hover{
+            background-color: lightgrey;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        ul:nth-child(1){
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+            li{
+                flex: 1;
+                margin: 0 5px;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                // font-weight: bold;
+            }
+            li:before{
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 80%;
+                top: 10%;
+                left: 0;
+                border-right: 2px solid lightgrey;
+                z-index: -1;
+            }
+        }
+
+        table{
+            width: 100%;
+            th{
+                text-align: center;
+                border: 1px solid lightgrey;
+                font-weight: lighter;
+                padding: 10px;
+                cursor: pointer;
+
+                div{
+                    width: 30px;
+                    height: 30px;
+                    margin: auto;
+                }
+            }
+        }
+
+    }
+    .product-list{
+        flex: 1;
+        margin: 20px;
+
+
+        img{
+            width: 100%;
+        }
+    }
+}
+.color1{
+    background-color: red;
+}
+.color2{
+    background-color: orange;
+}
+.color3{
+    background-color: yellow;
+}
+.color4{
+    background-color: green;
+}
+.color5{
+    background-color: blue;
+}
+.color6{
+    background-color: grey;
+}
+.color7{
+    background-color: purple;
+}
+.color8{
+    background-color: rgb(68, 170, 196);
+}
+.color9{
+    background-color: black;
+}
+.color10{
+    background-color: brown;
+}
+.color11{
+    background-color: rgb(226, 224, 224);
+}
+.color12{
+    background-color: rgb(166, 95, 247);
+}

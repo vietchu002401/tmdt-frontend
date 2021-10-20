@@ -1,0 +1,89 @@
+.search-order-main{
+    width: 70%;
+    height: auto;
+    padding: 30px;
+    margin: 50px auto 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2{
+        margin: 0;
+        text-align: center;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+    input{
+        width: 90%;
+        height: 40px;
+        padding: 5px;
+        margin: 20px;
+        outline: none;
+        border: 2px solid lightgrey;
+    }
+
+    button{
+        width: 250px;
+        height: 60px;
+        color: white;
+        font-weight: bold;
+        margin: 10px auto;
+        display: block;
+        background-color: rgb(235, 106, 0);
+    }
+
+    .order-product{
+        display: flex;
+        height: 200px;
+        margin: 20px;
+        border-bottom: 2px solid lightgrey;
+        padding: 10px;
+
+
+        .order-img{
+            flex-basis: 35%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .order-more{
+            flex: 1;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+
+            h3{
+                font-weight: bold;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                padding: 10px;
+            }
+
+            div{
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                padding: 10px;
+
+                p{
+                    margin: 0;
+                    flex: 1;
+                }
+            }
+            h4{
+                color: rgb(235, 106, 0);
+                font-weight: bold;
+                margin: 0;
+                padding: 10px;
+            }
+        }
+    }
+    .cost{
+        margin: 20px 5px;
+        font-weight: bold;
+    }
+}
