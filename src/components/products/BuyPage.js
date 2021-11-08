@@ -3,46 +3,49 @@ import Carousel from '../Carousel';
 import "../../styles/buyPage.scss"
 import { useHistory, useParams } from 'react-router';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToBasket } from '../../store/actions';
 
 const BuyPage = (props) => {
 
     let params = useParams()
 
-    let basketItem = useSelector(state => state.basketReducer)
+    // let basketItem = useSelector(state => state.basketReducer)
     let dispatch = useDispatch()
-    let dispatchAddToBasket = (item)=>dispatch(addToBasket(item))
+    let dispatchAddToBasket = (item) => dispatch(addToBasket(item))
     let history = useHistory()
 
     let slider1 = [
-        <a href="#" className="slide-content" href="#">BUY MORE PAY LESS - ÁP DỤNG KHI MUA PHỤ KIỆN</a>,
-        <a href="#" className="slide-content" href="#">BUY 2 GET 10% OFF - ÁP DỤNG VỚI TẤT CẢ BASIC TEE</a>,
-        <a href="#" className="slide-content" href="#">HÀNG 2 TUẦN NHẬN ĐỔI - GIÀY NỬA NĂM BẢO HÀNH</a>,
-        <a href="#" className="slide-content" href="#">FREE SHIPPING VỚI HOÁ ĐƠN TỪ 800K !</a>,
+        <a href={props.match.url} className="slide-content">BUY MORE PAY LESS - ÁP DỤNG KHI MUA PHỤ KIỆN</a>,
+        <a href={props.match.url} className="slide-content">BUY 2 GET 10% OFF - ÁP DỤNG VỚI TẤT CẢ BASIC TEE</a>,
+        <a href={props.match.url} className="slide-content">HÀNG 2 TUẦN NHẬN ĐỔI - GIÀY NỬA NĂM BẢO HÀNH</a>,
+        <a href={props.match.url} className="slide-content">FREE SHIPPING VỚI HOÁ ĐƠN TỪ 800K !</a>,
     ]
 
     let [detail, setDetail] = useState({})
     let [toBuy, setToBuy] = useState({})
 
-    useEffect(async () => {
-        let data = {
-            id: params.id
+    useEffect(() => {
+        let fetchData = async() => {
+            let data = {
+                id: params.id
+            }
+            await axios.post(process.env.REACT_APP_SERVER_URL + "/get-detail", data)
+                .then(res => {
+                    setDetail(res.data)
+                    document.title = res.data.name + " | Ananas Clone"
+                }).catch(err => {
+                    console.log(err)
+                })
         }
-        await axios.post(process.env.REACT_APP_SERVER_URL + "/get-detail", data)
-            .then(res => {
-                setDetail(res.data)
-                document.title = res.data.name + " | Ananas Clone"
-            }).catch(err => {
-                console.log(err)
-            })
-    }, [])
-    useEffect(()=>{
+        fetchData()
+    }, [params.id])
+    useEffect(() => {
         window.scrollTo({
-            top : 0,
-            behavior : "instant"
+            top: 0,
+            behavior: "instant"
         })
-    },[])
+    }, [])
 
     let RenderGender = ({ detail }) => {
         if (detail.gender === 1) {
@@ -87,20 +90,23 @@ const BuyPage = (props) => {
     let chooseQuantity = (e) => {
         let data = toBuy
         data.buy = Number(e.target.value)
-        delete data.quantity
-        setToBuy(data)
+        setToBuy({...data})
     }
 
-    let addBasket=()=>{
-        if(toBuy.buy > 0){
-            dispatchAddToBasket(toBuy)
+    let addBasket = () => {
+        if (toBuy.buy > 0) {
+            let data = toBuy
+            delete data.quantity
+            dispatchAddToBasket(data)
         }
     }
 
-    let goToPay=()=>{
-        if(toBuy.buy > 0){
-            dispatchAddToBasket(toBuy)
-            history.push({pathname : "/your-basket"})
+    let goToPay = () => {
+        if (toBuy.buy > 0) {
+            let data = toBuy
+            delete data.quantity
+            dispatchAddToBasket(data)
+            history.push({ pathname: "/your-basket" })
         }
     }
 
@@ -113,10 +119,10 @@ const BuyPage = (props) => {
 
                 </div>
                 <div className="buy-page__main">
-                    <div className="buy__img">
-                        <div style={{ width: "100%", height: "700px", background: "grey" }}>
+                    <div style={{ backgroundImage: "url(" + detail.image + ")" }} className="buy__img">
+                        {/* <div style={{ width: "100%", height: "700px", backgroundImage: "url(" + detail.image + ")" }}>
 
-                        </div>
+                        </div> */}
                     </div>
                     <div className="buy__info">
                         <h3>{detail.name} - {detail.form} - {detail.color} - <RenderGender detail={detail} />
@@ -128,7 +134,7 @@ const BuyPage = (props) => {
                         <h4>{detail.cost} VND</h4>
 
                         <div className="option">
-                            <p>Kết hợp thiết kế hở gót cùng quai dán, Basas Bumper Gum NE - Mule mang lại trải nghiệm tiện lợi tăng cấp so với phiên bản thắt dây truyền thống. Lên chân nhanh chóng trong tích tắc không cần chạm tay nhưng vẫn sở hữu diện mạo đầy tính thanh lịch, Basas Bumper Gum NE - Mule chính là lựa chọn toàn diện cho mọi dịp dạo chơi từ nhà ra phố của các tín đồ thời trang trẻ.</p>
+                            {detail.introduce && detail.introduce.length > 0 ? <p>{detail.introduce}</p> : <p>Điểm độc đáo của những đôi giày này là chất liệu vải cao cấp, màu sắc bắt mắt, đế mềm. Bạn có thể dễ dàng uốn cong và gấp dễ dàng mà không sợ giày bị hư hỏng hoặc vỡ, nhờ các đường may chắc chắn. Không giống như giày sử dụng keo như các dòng sản phẩm khác, nó dễ bị phồng khi tiếp xúc với nước, mưa hoặc tập thể dục, đi lại nhiều.</p>}
                         </div>
 
                         <div className="option">
@@ -159,10 +165,10 @@ const BuyPage = (props) => {
                                     </select>
                                 </div>
                             </div>
-                            <div onClick={addBasket} className="add-basket">
+                            <div onClick={addBasket} style={toBuy.buy > 0 ? null : { cursor: "not-allowed" }} className="add-basket">
                                 <h3>THÊM VÀO GIỎ HÀNG</h3>
                             </div>
-                            <div onClick={goToPay} className="pay">
+                            <div onClick={goToPay} style={toBuy.buy > 0 ? null : { cursor: "not-allowed" }} className="pay">
                                 <h3>THANH TOÁN</h3>
                             </div>
                         </div>

@@ -30,7 +30,11 @@ const OderInfo = (props) => {
     }
 
     let totalCost = (basket) => {
-        return basket.length > 1 ? basket.reduce((a, b) => Number(a.cost * a.buy) + Number(b.cost * b.buy)) : Number(basket[0].cost * basket[0].buy)
+        let arr = basket.map(item=>{
+            return Number(item.cost) * item.buy
+        })
+        return arr.reduce((a,b)=> a+b,0)
+        // return basket.length > 1 ? basket.reduce((a, b) => Number(a.cost) * a.buy + Number(b.cost) * b.buy) : Number(basket[0].cost) * basket[0].buy
     }
 
     let [check, setCheck] = useState(false)
@@ -69,7 +73,7 @@ const OderInfo = (props) => {
                     <div className="product-info">
                         <div className="total">
                             <strong>Đơn hàng</strong>
-                            <p>{totalCost(basket)}.000 VND</p>
+                            <p>{new Intl.NumberFormat('de-DE').format(totalCost(basket))}.000 VND</p>
                         </div>
                         <div className="total">
                             <strong>Giảm</strong>
@@ -86,7 +90,7 @@ const OderInfo = (props) => {
                     </div>
                     <div className="total">
                         <strong>TỔNG CỘNG</strong>
-                        <p style={{ color: "rgb(235, 106, 0)", fontWeight: "bold" }}>{totalCost(basket) + 45}.000 VND</p>
+                        <p style={{ color: "rgb(235, 106, 0)", fontWeight: "bold" }}>{new Intl.NumberFormat('de-DE').format(totalCost(basket) + 45)}.000 VND</p>
                     </div>
                     {loader ? <div className="loader"></div> : null}
                     {check ? <p style={{color : "red"}}>Vui lòng nhập đầy đủ thông tin..!</p> : null}

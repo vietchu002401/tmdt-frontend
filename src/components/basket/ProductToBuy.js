@@ -7,24 +7,27 @@ const ProductToBuy = (props) => {
 
     let [status, setStatus] = useState("")
     let dispatch = useDispatch()
-    let dispatchRemoveFromBasket = (item)=> dispatch(removeFromBasket(item))
+    let dispatchRemoveFromBasket = (item) => dispatch(removeFromBasket(item))
 
-    useEffect(async()=>{
-        await axios.post(process.env.REACT_APP_SERVER_URL + "/get-detail",{id : props.id})
-        .then(res=>{
-            setStatus(res.data.quantity > 0 ? "Còn hàng" : "Hết hàng")
-        }).catch(err=>{
-            console.log(err)
-        })
-    },[props.id])
+    useEffect(() => {
+        let fetchData = async() => {
+            await axios.post(process.env.REACT_APP_SERVER_URL + "/get-detail", { id: props.id })
+                .then(res => {
+                    setStatus(res.data.quantity > 0 ? "Còn hàng" : "Hết hàng")
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+        fetchData()
+    }, [props.id])
 
-    let remove=()=>{
+    let remove = () => {
         dispatchRemoveFromBasket(props.id)
     }
     return (
         <div className="basket-content">
             <div className="image">
-                <img src={props.src} />
+                <img src={props.src} alt="" />
             </div>
             <div className="introduce">
                 <h3>{props.name} - {props.form} - {props.color} - {props.gender}</h3>

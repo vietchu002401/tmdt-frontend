@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import Carousel from '../Carousel';
 import "../../styles/basket.scss"
 import ProductToBuy from './ProductToBuy';
-import src from "../../assets/buyList/catalogy-1.jpg"
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-const Basket = () => {
+const Basket = (props) => {
 
     let basket = useSelector(state => state.basketReducer)
     let history = useHistory()
 
     let slider1 = [
-        <a href="#" className="slide-content" href="#">BUY MORE PAY LESS - ÁP DỤNG KHI MUA PHỤ KIỆN</a>,
-        <a href="#" className="slide-content" href="#">BUY 2 GET 10% OFF - ÁP DỤNG VỚI TẤT CẢ BASIC TEE</a>,
-        <a href="#" className="slide-content" href="#">HÀNG 2 TUẦN NHẬN ĐỔI - GIÀY NỬA NĂM BẢO HÀNH</a>,
-        <a href="#" className="slide-content" href="#">FREE SHIPPING VỚI HOÁ ĐƠN TỪ 800K !</a>,
+        <a href={props.match.url} className="slide-content">BUY MORE PAY LESS - ÁP DỤNG KHI MUA PHỤ KIỆN</a>,
+        <a href={props.match.url} className="slide-content">BUY 2 GET 10% OFF - ÁP DỤNG VỚI TẤT CẢ BASIC TEE</a>,
+        <a href={props.match.url} className="slide-content">HÀNG 2 TUẦN NHẬN ĐỔI - GIÀY NỬA NĂM BẢO HÀNH</a>,
+        <a href={props.match.url} className="slide-content">FREE SHIPPING VỚI HOÁ ĐƠN TỪ 800K !</a>,
     ]
 
     useEffect(()=>{
@@ -38,7 +37,7 @@ const Basket = () => {
             return (
                 <ProductToBuy
                     key={index}
-                    src={src}
+                    src={item.image}
                     name={item.name}
                     form={item.form}
                     color={item.color}
@@ -53,7 +52,7 @@ const Basket = () => {
 
     let totalCost=(basket)=>{
         let arr = basket.map(item=>{
-            return Number(item.cost * item.buy)
+            return Number(item.cost) * item.buy
         })
         return arr.reduce((a,b)=> a+b,0)
     }
@@ -69,7 +68,7 @@ const Basket = () => {
                     <h3>ĐƠN HÀNG</h3>
                     <div>
                         <p>Đơn hàng</p>
-                        <p>{totalCost(basket)}.000</p>
+                        <p>{new Intl.NumberFormat('de-DE').format(totalCost(basket))}.000</p>
                     </div>
                     <div>
                         <p>Giảm</p>
@@ -77,7 +76,7 @@ const Basket = () => {
                     </div>
                     <div>
                         <p style={{ fontWeight: "bold" }}>Tạm tính</p>
-                        <p style={{ fontWeight: "bold" }}>{totalCost(basket)}.000 VND</p>
+                        <p style={{ fontWeight: "bold" }}>{new Intl.NumberFormat('de-DE').format(totalCost(basket))}.000 VND</p>
                     </div>
 
                     <button onClick={()=> history.push({pathname : "/shipping-information"})}>

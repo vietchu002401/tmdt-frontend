@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import "../styles/basketPreview.scss"
-import img from "../assets/buyList/catalogy-1.jpg"
 const BasketLink = () => {
 
     let styled = {
@@ -57,7 +56,7 @@ let PreviewBasket = (props) => {
         if(obj){
             return (
                 <div style={{ minHeight: "130px", width: "100%", padding: "10px", display: 'flex', justifyContent: "space-between", borderBottom: "2px solid black" }}>
-                    <div style={{ flexBasis: "30%", maxHeight: "100px", backgroundImage: "url(" + img + ")", backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
+                    <div style={{ flexBasis: "30%", maxHeight: "100px", backgroundImage: "url(" + obj.image + ")", backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", flex: "1", padding: "10px", paddingTop: "0" }}>
                         <strong>{obj.name}</strong>
@@ -80,8 +79,8 @@ let PreviewBasket = (props) => {
     let mapBasket2 = (obj) => {
         if(obj){
             return (
-                <div style={{ minHeight: "130px", width: "100%", padding: "10px", display: 'flex', justifyContent: "space-between", borderBottom: "2px solid black", display : "none" }}>
-                    <div style={{ flexBasis: "30%", maxHeight: "100px", backgroundImage: "url(" + img + ")", backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
+                <div style={{ minHeight: "130px", width: "100%", padding: "10px", display: 'none', justifyContent: "space-between", borderBottom: "2px solid black" }}>
+                    <div style={{ flexBasis: "30%", maxHeight: "100px", backgroundImage: "url(" + obj.image + ")", backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat" }}>
                     </div>
                     <div style={{ display: "flex", flexDirection: "column", flex: "1", padding: "10px", paddingTop: "0" }}>
                         <strong>{obj.name}</strong>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Carousel from '../Carousel';
 import mainPic1 from "../../assets/Hi-im-Mule_1920x1050-Desktop.jpg"
 import mainPic2 from "../../assets/Track-6_Suede_Moonphase_1920x1050.jpg"
@@ -12,34 +12,21 @@ import Bigpreview from './Bigpreview';
 import buyList1 from "../../assets/buyList/catalogy-1.jpg"
 import buyList2 from "../../assets/buyList/catalogy-2.jpg"
 import buyList3 from "../../assets/buyList/catalogy-3.jpg"
-import Product from '../Product';
 import mainPic from "../../assets/Banner_Clothing.jpg"
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const Home = (props) => {
 
     let slider1 = [
-        <a href="#" className="slide-content" href="#">BUY MORE PAY LESS - ÁP DỤNG KHI MUA PHỤ KIỆN</a>,
-        <a href="#" className="slide-content" href="#">BUY 2 GET 10% OFF - ÁP DỤNG VỚI TẤT CẢ BASIC TEE</a>,
-        <a href="#" className="slide-content" href="#">HÀNG 2 TUẦN NHẬN ĐỔI - GIÀY NỬA NĂM BẢO HÀNH</a>,
-        <a href="#" className="slide-content" href="#">FREE SHIPPING VỚI HOÁ ĐƠN TỪ 800K !</a>,
+        <a href={props.match.url} className="slide-content">BUY MORE PAY LESS - ÁP DỤNG KHI MUA PHỤ KIỆN</a>,
+        <a href={props.match.url} className="slide-content">BUY 2 GET 10% OFF - ÁP DỤNG VỚI TẤT CẢ BASIC TEE</a>,
+        <a href={props.match.url} className="slide-content">HÀNG 2 TUẦN NHẬN ĐỔI - GIÀY NỬA NĂM BẢO HÀNH</a>,
+        <a href={props.match.url} className="slide-content">FREE SHIPPING VỚI HOÁ ĐƠN TỪ 800K !</a>,
     ]
     let slide2 = [
         <img src={mainPic1} alt="main" />,
         <img src={mainPic2} alt="main" />,
         <img src={mainPic3} alt="main" />
-    ]
-
-    let slide3=[
-        <Product src={buyList1} title="Hat" color="pink" cost="275.000"/>,
-        <Product src={buyList1} title="Hat" color="pink" cost="275.000"/>,
-        <Product src={buyList1} title="Hat" color="pink" cost="275.000"/>,
-        <Product src={buyList1} title="Hat" color="pink" cost="275.000"/>,
-        <Product src={buyList1} title="Hat" color="pink" cost="275.000"/>,
-        <Product src={buyList1} title="Hat" color="pink" cost="275.000"/>,
-        <Product src={buyList1} title="Hat" color="pink" cost="275.000"/>,
-        <Product src={buyList1} title="Hat" color="pink" cost="275.000"/>,
-        <Product src={buyList1} title="Hat" color="pink" cost="275.000"/>,
     ]
 
     useEffect(()=>{

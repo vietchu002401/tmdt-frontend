@@ -12,6 +12,7 @@ import PayPage from './components/Pay/PayPage';
 import OrderSuccess from './components/Pay/OrderSuccess';
 import SearchOrder from './components/searchOrder/SearchOrder';
 import ComingSoon from './components/ComingSoon';
+import SearchPage from './components/searchOrder/SearchPage';
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route exact path="/order-success/:id" component={OrderSuccess}/>
         <Route exact path="/search-order" component={SearchOrder}/>
         <Route exact path="/coming-soon" component={ComingSoon}/>
+        <Route exact path="/search-results" component={SearchPage}/>
       </Switch>
       <Footer/>
     </Router>

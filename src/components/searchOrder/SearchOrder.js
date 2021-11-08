@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Carousel from '../Carousel';
 import "../../styles/searchOrder.scss"
 import axios from 'axios';
-import img from "../../assets/buyList/catalogy-1.jpg"
 
-const SearchOrder = () => {
+const SearchOrder = (props) => {
 
     useEffect(() => {
         document.title = "Search Order | Ananas Clone"
@@ -14,14 +13,14 @@ const SearchOrder = () => {
     let [order, setOrder] = useState({})
 
     let slider1 = [
-        <a href="#" className="slide-content" href="#">BUY MORE PAY LESS - ÁP DỤNG KHI MUA PHỤ KIỆN</a>,
-        <a href="#" className="slide-content" href="#">BUY 2 GET 10% OFF - ÁP DỤNG VỚI TẤT CẢ BASIC TEE</a>,
-        <a href="#" className="slide-content" href="#">HÀNG 2 TUẦN NHẬN ĐỔI - GIÀY NỬA NĂM BẢO HÀNH</a>,
-        <a href="#" className="slide-content" href="#">FREE SHIPPING VỚI HOÁ ĐƠN TỪ 800K !</a>,
+        <a href={props.match.url} className="slide-content">BUY MORE PAY LESS - ÁP DỤNG KHI MUA PHỤ KIỆN</a>,
+        <a href={props.match.url} className="slide-content">BUY 2 GET 10% OFF - ÁP DỤNG VỚI TẤT CẢ BASIC TEE</a>,
+        <a href={props.match.url} className="slide-content">HÀNG 2 TUẦN NHẬN ĐỔI - GIÀY NỬA NĂM BẢO HÀNH</a>,
+        <a href={props.match.url} className="slide-content">FREE SHIPPING VỚI HOÁ ĐƠN TỪ 800K !</a>,
     ]
 
     let searchOrder = async (orderId) => {
-        await axios.post(process.env.REACT_APP_SERVER_URL + "/search-order", { id: orderId })
+        await axios.get(process.env.REACT_APP_SERVER_URL + "/search-order/" + orderId)
             .then(res => {
                 setOrder(res.data)
             }).catch(err => {
@@ -36,7 +35,7 @@ const SearchOrder = () => {
                     {order.productInfo.map((item, index) => {
                         return (
                             <div key={index} className="order-product">
-                                <div style={{ backgroundImage: "url(" + img + ")" }} className="order-img"></div>
+                                <div style={{ backgroundImage: "url(" + item.image + ")" }} className="order-img"></div>
                                 <div className="order-more">
                                     <h3>{item.name} - {item.form} - {item.color} - {item.gender}</h3>
                                     <div>
@@ -50,8 +49,9 @@ const SearchOrder = () => {
                     })}
                     <div style={{ display: "flex" }}>
                         <h3 className="cost">Tổng giá trị đơn hàng: </h3>
-                        <h3 style={{ color: "rgb(235, 106, 0)" }} className="cost">{order.totalCost} VND</h3>
+                        <h3 style={{ color: "rgb(235, 106, 0)" }} className="cost">{new Intl.NumberFormat('de-DE').format(order.totalCost)} VND</h3>
                     </div>
+                    {order.status ? <h3>Đơn hàng của bạn đã được xác nhận và được giao sau ít ngày</h3> : <h3>Đơn hàng chưa được xác nhận</h3>}
                 </div>
             )
         } else {

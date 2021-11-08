@@ -4,3 +4,12 @@
   border: none;
   font-family: sans-serif; 
 }
+
+.search-product-main{
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 50px auto;
+  padding: 20px;
+}

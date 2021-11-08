@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory, useLocation } from "react-router-dom"
+import {  useHistory, useLocation } from "react-router-dom"
 import qs from "query-string"
 
 const Attribute = () => {
@@ -13,13 +13,13 @@ const Attribute = () => {
     let sizeSearch = search.get("size")
     let colorSearch = search.get("color")
 
-    let [gender, setGender] = useState(genderSearch && genderSearch || "")
-    let [status, setStatus] = useState(statusSearch && statusSearch.split(",") || [])
-    let [form, setForm] = useState(formSearch && formSearch.split(",") || [])
-    let [line, setLine] = useState(lineSearch && lineSearch.split(",") || [])
-    let [costRange, setCostRange] = useState(costRangeSearch && costRangeSearch.split(",") || [])
-    let [size, setSize] = useState(sizeSearch && sizeSearch.split(",") || [])
-    let [color, setColor] = useState(colorSearch && colorSearch.split(",") || [])
+    let [gender, setGender] = useState((genderSearch && genderSearch) || "")
+    let [status, setStatus] = useState((statusSearch && statusSearch.split(",")) || [])
+    let [form, setForm] = useState((formSearch && formSearch.split(",")) || [])
+    let [line, setLine] = useState((lineSearch && lineSearch.split(",")) || [])
+    let [costRange, setCostRange] = useState((costRangeSearch && costRangeSearch.split(",")) || [])
+    let [size, setSize] = useState((sizeSearch && sizeSearch.split(",")) || [])
+    let [color, setColor] = useState((colorSearch && colorSearch.split(",")) || [])
 
 
 
@@ -40,7 +40,7 @@ const Attribute = () => {
             let searchString = qs.stringify(query);
             history.push({ pathname: "/product-list", search: "?" + searchString })
         }
-    }, [gender, status, form, line, costRange, size, color])
+    }, [gender, status, form, line, costRange, size, color, history])
 
     let updateState=(mood,value)=>{
         if(mood.includes(value)){
