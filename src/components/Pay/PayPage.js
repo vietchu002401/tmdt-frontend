@@ -69,14 +69,6 @@ const PayPage = (props) => {
                             <input type="radio" name="transport" value="1" defaultChecked/>
                             <p style={{ margin: "0", marginLeft: "10px" }}>Thanh toán trực tiếp khi giao hàng</p>
                         </div>
-                        {/* <div style={{ display: 'flex', alignItems: "center", margin : "10px" }}>
-                            <input type="radio" name="transport" value="2" />
-                            <p style={{ margin: "0", marginLeft: "10px" }}>Thanh toán bằng thẻ quốc tế và nội địa (ATM)</p>
-                        </div>
-                        <div style={{ display: 'flex', alignItems: "center", margin : "10px" }}>
-                            <input type="radio" name="transport" value="3" />
-                            <p style={{ margin: "0", marginLeft: "10px" }}>Thanh toán bằng ví MoMo</p>
-                        </div> */}
                     </div>
                 </div>
                 <div className="order-info">

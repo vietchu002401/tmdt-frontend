@@ -20,7 +20,10 @@ const SearchOrder = (props) => {
     ]
 
     let searchOrder = async (orderId) => {
-        await axios.get(process.env.REACT_APP_SERVER_URL + "/search-order/" + orderId)
+        let data = {
+            id : orderId
+        }
+        await axios.post(process.env.REACT_APP_SERVER_URL + "/search-order",data)
             .then(res => {
                 setOrder(res.data)
             }).catch(err => {

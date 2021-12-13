@@ -20,9 +20,13 @@ const OrderSuccess = (props) => {
 
     useEffect(() => {
         let fetchData = async()=>{
-            await axios.get(process.env.REACT_APP_SERVER_URL + "/search-order/" + params.id)
+            let data = {
+                id : params.id
+            }
+            await axios.post(process.env.REACT_APP_SERVER_URL + "/search-order",data)
             .then(res => {
                 setOrder({ ...res.data })
+                console.log(res.data)
             }).catch(err => {
                 console.log(err)
             })

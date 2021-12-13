@@ -34,7 +34,6 @@ const OderInfo = (props) => {
             return Number(item.cost) * item.buy
         })
         return arr.reduce((a,b)=> a+b,0)
-        // return basket.length > 1 ? basket.reduce((a, b) => Number(a.cost) * a.buy + Number(b.cost) * b.buy) : Number(basket[0].cost) * basket[0].buy
     }
 
     let [check, setCheck] = useState(false)

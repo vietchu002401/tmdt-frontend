@@ -20,8 +20,10 @@ const SearchPage = (props) => {
 
     useEffect(()=>{
         let fetchData = async()=>{
-            
-            await axios.get(process.env.REACT_APP_SERVER_URL + "/search-product/" + key.toLowerCase())
+            let data = {
+                key : key.toLowerCase()
+            }
+            await axios.post(process.env.REACT_APP_SERVER_URL + "/search-product",data)
             .then(res=>{
                 setProducts([...res.data])
             }).catch(err=>{

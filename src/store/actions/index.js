@@ -19,3 +19,16 @@ export let removeAll = ()=>{
         type : types.REMOVEALL
     }
 }
+
+export let loginAction=(item)=>{
+    return{
+        type : types.LOGIN,
+        item
+    }
+}
+
+export let logoutAction=()=>{
+    return{
+        type : types.LOGOUT
+    }
+}

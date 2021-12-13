@@ -1,0 +1,43 @@
+.all{
+    max-width: 1200px;
+    height: auto;
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 auto;
+
+    .item{
+        width: 300px;
+        height: 400px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid lightgrey;
+
+        .item__img{
+            width: 50%;
+            height: 150px;
+            margin: 0 auto;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+
+        strong{
+            margin: 0;
+            padding: 5px;
+        }
+        p{
+            margin: 0;
+            padding: 5px;
+        }
+        button{
+            width: 100%;
+            height: 30px;
+            background-color: lightgreen;
+            cursor: pointer;
+        }
+    }
+}

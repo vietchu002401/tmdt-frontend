@@ -25,18 +25,6 @@ let Carousel = (props) => {
     return (
         <Slider {...settings}>
             {arr}
-            {/* <div className="slide-content">
-                <a href="#">BUY MORE PAY LESS - ÁP DỤNG KHI MUA PHỤ KIỆN</a>
-            </div>
-            <div className="slide-content">
-                <a href="#">BUY 2 GET 10% OFF - ÁP DỤNG VỚI TẤT CẢ BASIC TEE</a>
-            </div>
-            <div className="slide-content">
-                <a href="#">HÀNG 2 TUẦN NHẬN ĐỔI - GIÀY NỬA NĂM BẢO HÀNH</a>
-            </div>
-            <div className="slide-content">
-                <a href="#">FREE SHIPPING VỚI HOÁ ĐƠN TỪ 800K !</a>
-            </div> */}
         </Slider>
     )
 }

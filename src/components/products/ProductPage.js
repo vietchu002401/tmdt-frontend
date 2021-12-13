@@ -32,12 +32,12 @@ const ProductPage = (props) => {
 
     let convertSearch = (gender, status, form, line, costRange, size, color) => {
         let genderConvert = 0
-        let statusConvert = status.length > 0 ? status.split(",") : []
-        let formConvert = form.length > 0 ? form.split(",") : []
-        let lineConvert = line.length > 0 ? line.split(",") : []
-        let costRangeConvert = costRange.length > 0 ? costRange.split(",") : []
-        let sizeConvert = size.length > 0 ? size.split(",") : []
-        let colorConvert = color.length > 0 ? color.split(",") : []
+        let statusConvert = status.length > 0 ? status.split(",") : ""
+        let formConvert = form.length > 0 ? form.split(",") : ""
+        let lineConvert = line.length > 0 ? line.split(",") : ""
+        let costRangeConvert = costRange.length > 0 ? costRange.split(",") : ""
+        let sizeConvert = size.length > 0 ? size.split(",") : ""
+        let colorConvert = color.length > 0 ? color.split(",") : ""
 
         if (gender === "men") {
             genderConvert = [1, 2]
@@ -80,9 +80,6 @@ const ProductPage = (props) => {
                 let data = convertSearch(gender, status, form, line, costRange, size, color)
                 await axios.post(process.env.REACT_APP_SERVER_URL + "/find-product", data)
                     .then(res => {
-                        // let arr = res.data.map((item, index) => {
-                        //     return <Product key={index} quantity={item.quantity} id={item.id} src={item.image} name={item.name} color={item.color} cost={item.cost} />
-                        // })
                         setList([...res.data])
                         setLoader(false)
                         setLoadMore(false)

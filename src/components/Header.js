@@ -54,7 +54,7 @@ const Header = () => {
                     </svg><Link to="/your-basket">Giỏ hàng ({basket.length})</Link></li>
                 </ul>
             </div>
-            <header className="header">
+            <header className="headerr">
                 <div className="header__img">
                     <Link to="/"><img src={logo} alt="logo" /></Link>
                 </div>
